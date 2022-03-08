@@ -94,7 +94,6 @@ if (dataForm) {
     const form = new FormData();
     form.append('name', document.getElementById('name').value);
     form.append('photo', fileInput.files[0]);
-    console.log(`index---${form}`);
     await updateData(form, 'Data');
 
     document.querySelector('.btn--save-data').textContent = 'Save Details';
