@@ -72,6 +72,8 @@ const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 export const uploadUserPhoto = upload.single('photo');
 
 export const resizeUserPhoto = catchAsyncError(async (req, res, next) => {
+  console.log('---------Resizing');
+
   if (!req.file) {
     return next();
   }
@@ -90,6 +92,7 @@ export const resizeUserPhoto = catchAsyncError(async (req, res, next) => {
 // ----------------------------------- ROUTE HANDLERS FOT USERS -----------------------------------------------------------------------
 // --------------------------------------- Update User Data --------------------------------------------
 export const updateMe = catchAsyncError(async (req, res, next) => {
+  console.log('---------updateMe');
   // 1) Create error if user sends password data
   if (req.body.password || req.body.passswordConfirm) {
     return next(
