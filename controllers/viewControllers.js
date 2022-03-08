@@ -3,6 +3,15 @@ import { Booking } from '../models/bookingModel.js';
 import { catchAsyncError } from '../utilities/catchAsyncError.js';
 import { AppError } from '../utilities/appError.js';
 
+export const alerts = (req, res, next) => {
+  const { alert } = req.query;
+  if (alert === 'booking') {
+    res.locals.alert =
+      "Your booking was successful! Please check your email for the confirmation. If your booking doesn't show up here immediately, please come back later.";
+  }
+  next();
+};
+
 export const getOverview = catchAsyncError(async (req, res, next) => {
   // 1) Get tours data from database collection
   const tours = await Tour.find();

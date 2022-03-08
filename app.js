@@ -18,6 +18,7 @@ import { viewRouter } from './routes/viewRoutes.js';
 import { bookingRouter } from './routes/bookingRoutes.js';
 import { AppError } from './utilities/appError.js';
 import { globalErrorHandler } from './controllers/errorControllers.js';
+import * as BookingControllers from './controllers/bookingControllers.js';
 
 // PREOCESS.ENV CONFIGURATION
 // Needs to configure this before express app created, so that was configured in tourRoutes.js because tourRoutes.js was imported and executed first before this file gets executed...
@@ -52,11 +53,18 @@ app.use(helmet());
 
 // For limiting requests from same IP
 const limiter = rateLimit({
-  max: 50,
-  windowMs: 30 * 60 * 1000,
+  max: 100,
+  windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP! Please try again after 30 minutes',
 });
 app.use('/api', limiter);
+
+// For Stripe
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  BookingControllers.webhookCheckout
+);
 
 // For develeopment env logging
 if (process.env.NODE_ENV === 'development') {

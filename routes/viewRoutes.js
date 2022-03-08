@@ -2,7 +2,6 @@ import express from 'express';
 
 import * as ViewControllers from './../controllers/viewControllers.js';
 import * as AuthControllers from './../controllers/authControllers.js';
-import * as BookingControllers from './../controllers/bookingControllers.js';
 
 const router = express.Router();
 
@@ -18,11 +17,6 @@ router.get('/signup/confirm_account', AuthControllers.signupConfirm);
 
 router.get('/me', AuthControllers.protect, ViewControllers.getAccount);
 
-router.get(
-  '/my-tours',
-  BookingControllers.createBookingCheckout,
-  AuthControllers.protect,
-  ViewControllers.getMyTours
-);
+router.get('/my-tours', AuthControllers.protect, ViewControllers.getMyTours);
 
 export { router as viewRouter };

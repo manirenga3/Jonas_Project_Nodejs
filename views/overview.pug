@@ -2,6 +2,13 @@ extends base
 
 block content
   main.main
+    - if(tours.length===0)
+      .error
+        .error__title
+          h2.heading-secondary.heading-secondary--error No Bookings Found!   
+          h2.error__emoji 💥
+        .error__msg Please book a tour to see your bookings
+    
     .card-container
       
       each tour in tours
