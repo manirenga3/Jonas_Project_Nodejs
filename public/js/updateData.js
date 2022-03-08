@@ -23,6 +23,7 @@ export const updateData = async (data, type) => {
       }, 1000);
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);
+    console.log(`💥👋🎉${err}`);
+    // showAlert('error', err);
   }
 };
