@@ -5,6 +5,8 @@ import * as AuthControllers from './../controllers/authControllers.js';
 
 const router = express.Router();
 
+router.use(ViewControllers.alerts);
+
 router.get('/', AuthControllers.isLoggedIn, ViewControllers.getOverview);
 router.get('/tour/:slug', AuthControllers.isLoggedIn, ViewControllers.getTour);
 router.get('/login', AuthControllers.isLoggedIn, ViewControllers.getLoginForm);
