@@ -57,7 +57,11 @@ if (signupForm) {
     // document.getElementById('signupEmail').value = '';
     // document.getElementById('signupPassword').value = '';
     // document.getElementById('signupConfirmPassword').value = '';
-    document.querySelector('.btn--signup').textContent = 'Disabled...';
+    showAlert(
+      'error',
+      'Signup is currently disabled! Please contact admin.',
+      10
+    );
   });
 }
 

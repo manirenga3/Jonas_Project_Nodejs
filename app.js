@@ -1,4 +1,5 @@
 import path from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
@@ -9,7 +10,6 @@ import xss from 'xss-clean';
 import hpp from 'hpp';
 import morgan from 'morgan';
 import compression from 'compression';
-import { fileURLToPath } from 'url';
 
 import { tourRouter } from './routes/tourRoutes.js';
 import { userRouter } from './routes/userRoutes.js';
